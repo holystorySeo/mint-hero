@@ -1,4 +1,6 @@
-const heroAbi = [
+export const heroAddress = "0xC7a20922a1aFdD604f53d498E825D0C99FA02553";
+
+export const heroAbi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
     anonymous: false,
@@ -316,5 +318,3 @@ const heroAbi = [
     type: "function",
   },
 ];
-
-export default heroAbi;

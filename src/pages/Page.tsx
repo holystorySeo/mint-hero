@@ -1,11 +1,10 @@
 import { useWeb3React } from "@web3-react/core";
 import { Injected } from "../App";
-import heroAbi from "../static/heroAbi";
+import { heroAddress } from "../static/mintInfo";
+import { heroAbi } from "../static/mintInfo";
 import { ethers } from "ethers";
 
 export default function Page() {
-  const address = "0xC7a20922a1aFdD604f53d498E825D0C99FA02553";
-
   const { active, activate, deactivate, account, chainId, library } =
     useWeb3React();
 
@@ -17,7 +16,7 @@ export default function Page() {
   };
 
   const handleMint = async () => {
-    const contractInastance = new ethers.Contract(address, heroAbi);
+    const contractInastance = new ethers.Contract(heroAddress, heroAbi);
     const data = await contractInastance.populateTransaction.summon();
 
     const signer = library.getSigner();
