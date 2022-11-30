@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useWeb3React } from "@web3-react/core";
 import { heroAddress } from "../static/mintInfo";
@@ -8,7 +8,14 @@ import hero from '../static/hero.png';
 
 export default function Main() {
   const [message, setMessage] = useState("");
-  const { active, account, library } = useWeb3React();
+  const { active, account, chainId, library } = useWeb3React();
+
+
+  useEffect(() => {
+    if(chainId !== undefined) {
+      setMessage('Connected your wallet')
+    }
+  }, [chainId])
 
   const handleMint = async () => {
     if(active && account) {
